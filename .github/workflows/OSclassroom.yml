@@ -1,0 +1,21 @@
+name: run-autograding-tests
+
+on:
+  push:
+    branches:
+      - main   # main 브랜치에 push될 때 자동 실행
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run autograding tests
+        uses: education/autograding@v1
